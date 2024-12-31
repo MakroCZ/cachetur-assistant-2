@@ -1,46 +1,30 @@
-# userscript-typescript-template
+# Cachetur assistant 2
 
-Template repo using Webpack and TypeScript to build your userscript for Tampermonkey and more extensions.
+This is a complete re-write of original [https://github.com/cachetur-no/cachetur-assistant](https://github.com/cachetur-no/cachetur-assistant)
 
-Automatically generate headers from your package.json!
+This is a user-script, it modifies other websites. Errors may occur, especially after changes on geocaching.com. You assume all risks when using this script This script makes it easy to add caches to your trips. You can add caches directly from the map on geocaching.com, and from maps on project-gc.com.
 
-## Usage
+The script is tested on the newest version of Tampermonkey and Vivaldi (Chromium based browser). The Cachetur Assistant should also work in other browsers TamperMonkey support (Edge, Opera Next, Dolphin and UC), but this is not tested.
 
-### 1. Generate repostiory (two-ways)
+This script will only work if you select Leaflet as your map provider on geocaching.com.
 
-#### - Use this template to create your new repository
+Due to potential security issues, script was splitted into two parts:
+- [https://github.com/MakroCZ/cachetur-assistant-2](https://github.com/MakroCZ/cachetur-assistant-2) (`main part`)
+  - Responsible for communication with Cachetur servers
+  - Modify DOM elements
+  - Communication with `map connector`
+- [https://github.com/MakroCZ/cachetur-assistant-2-map-connector](https://github.com/MakroCZ/cachetur-assistant-2-map-connector) (`map connector`)
+  - Responsible for showing data on map received from `main part`
 
-![](./images/github-use-template.png)
+For all functionality you have to install **both** scripts
 
-#### - Clone this repository
 
-```bash
-# Use Github CLI
-$ gh repo clone pboymt/userscript-typescript-template
-# Or use 'git clone' command directly
-$ git clone https://github.com/pboymt/userscript-typescript-template.git
-```
+## Installation
 
-### Development
+To install the script, open `userscripts` folder, click the `cacheturassistant2.prod.user.js` in GitHub and then click the **`Raw`** button. Your userscript manager should automatically give you the option to install the script. Alternatively, you can just follow the link below:
+**[»» Install Cachetur assistant 2 ««](https://github.com/MakroCZ/cachetur-assistant-2/raw/main/userscripts/cacheturassistant2.prod.user.js)**
 
-1. Install dependencies with `npm install` or `npm ci`.
-2. Edit settings in `userscript` object in [`package.json`](./package.json), you can refer to the comments in [`plugins/userscript.plugin.ts`](./plugins/userscript.plugin.ts).
-3. Code your userscript in `src` directory (like [`src/index.ts`](./src/index.ts)).
-4. Generate userscript with `npm run build`.
-5. Import generated userscript to Tampermonkey by local file URI.
+## Built using userscript-typescript-template
+[https://github.com/pboymt/userscript-typescript-template](https://github.com/pboymt/userscript-typescript-template)
 
-### Compile other file types
-
-You need install other loader plugins to support other file types.
-
-For example, you can use `scss-loader` to compile `.scss` files. Install it with `npm install --save-dev scss-loader node-sass` and add it in [`webpack.config.ts`](./webpack.config.ts).
-
-### Debug
-
-Allow Tampermonkey's access to local file URIs ([Tampermonkey FAQs](https://tampermonkey.net/faq.php?ext=dhdg#Q204)) and import built userscript's file URL. 
-
-### Publish you userscript
-
-You can publish your userscript to [Greasy Fork](https://greasyfork.org/) or other websites.
-
-You can push your userscript to [Github](https://github.com) and import it to [Greasy Fork](https://greasyfork.org/import).
+Without this template this script probably wouldn't exists, at least not in this shape. Thanks

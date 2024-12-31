@@ -10,7 +10,7 @@ export default merge(base, {
     },
     output: {
         path: path.resolve(".", "userscripts"),
-        filename: "index.prod.user.js",
+        filename: "cacheturassistant2.prod.user.js",
     },
     watchOptions: {
         ignored: /node_modules/,

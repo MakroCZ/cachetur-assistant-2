@@ -15,11 +15,17 @@ const config: Configuration = {
                 use: "ts-loader",
                 exclude: /node_modules/,
             },
+            {
+                resourceQuery: /raw/,
+                type: 'asset/source',
+            }
         ],
     },
     externals: {
-        axios: "axios",
         "@trim21/gm-fetch": "GM_fetch",
+        i18next: "i18next",
+        "i18next-browser-languagedetector": "i18nextBrowserLanguageDetector",
+        "i18next-http-backend": "i18nextHttpBackend",
     },
     optimization: {
         minimize: false,
@@ -40,7 +46,8 @@ const config: Configuration = {
             banner: generateHeader,
             raw: true,
         })
-    ]
+    ],
+    cache: false
 };
 
 export default config;

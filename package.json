@@ -1,8 +1,8 @@
 {
-  "name": "userscript-typescript-template",
-  "version": "2.0.2",
-  "description": "Template repo using Webpack and TypeScript to build your userscript for Tampermonkey and more extensions.",
-  "main": "userscript/index.user.js",
+  "name": "cachetur-assistant-2",
+  "version": "0.1.0",
+  "description": "Companion script for cachetur.no",
+  "main": "userscript/cacheturhelper.user.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack/prod.ts",
@@ -11,20 +11,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pboymt/userscript-typescript-template.git"
+    "url": "git+https://github.com/MakroCZ/cachetur-assistant-2.git"
   },
   "keywords": [],
-  "author": "pboymt",
+  "author": "Makro",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pboymt/userscript-typescript-template/issues"
+    "url": "https://github.com/MakroCZ/cachetur-assistant-2/issues"
   },
-  "homepage": "https://github.com/pboymt/userscript-typescript-template#readme",
+  "homepage": "https://github.com/MakroCZ/cachetur-assistant-2",
   "devDependencies": {
+    "@trim21/gm-fetch": "^0.1.15",
     "@types/node": "^18.15.11",
     "@types/prettier": "^2.7.0",
-    "@types/tampermonkey": "^4.0.5",
+    "@types/tampermonkey": "^4.20.4",
     "@types/webpack": "^5.28.0",
+    "i18next": "^23.10.1",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-http-backend": "^2.5.0",
     "prettier": "^2.7.1",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.2.6",
@@ -35,26 +39,45 @@
     "webpack-merge": "^5.8.0"
   },
   "userscript": {
-    "require-template": "https://cdn.jsdelivr.net/npm/${dependencyName}@${dependencyVersion}",
-    "namespace": "http://tampermonkey.net/",
+    "require-template": "https://cdn.jsdelivr.net/npm/${dependencyName}@${dependencyVersion}/dist/umd/{dependencyName}.min.js",
+    "namespace": "https://cachetur.no/",
     "license": "https://opensource.org/licenses/MIT",
+    "icon": "https://cachetur.net/img/logo_top.png",
     "match": [
-      "https://github.com/*",
-      "https://www.baidu.com/*"
+      "https://www.geocaching.com/live/play/map*",
+      "https://www.geocaching.com/map/*",
+      "https://www.geocaching.com/geocache/*",
+      "https://www.geocaching.com/seek/cache_details.aspx*",
+      "https://www.geocaching.com/plan/lists/BM*",
+      "https://www.geocaching.com/play/geotours/*",
+      "file:///*/gsak/html/*",
+      "file:///*/html/*",
+      "https://project-gc.com/*",
+      "https://cachetur.no/bobilplasser"
     ],
     "connect": [
-      "github.com"
+      "cachetur.no",
+      "cachetur.net",
+      "self"
     ],
-    "require": [],
+    "require": [
+      "https://raw.githubusercontent.com/cghove/GM_config/master/gm_config.js",
+      "https://cdn.jsdelivr.net/npm/@trim21/gm-fetch@0.1.15",
+      "https://cdn.jsdelivr.net/npm/i18next@23.10.1/dist/umd/i18next.js",
+      "https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@7.2.0/dist/umd/i18nextBrowserLanguageDetector.js",
+      "https://cdn.jsdelivr.net/npm/i18next-http-backend@2.5.0/i18nextHttpBackend.js"
+    ],
     "grant": [
-      "GM.xmlHttpRequest"
+      "GM_xmlhttpRequest",
+      "GM_info",
+      "GM_setValue",
+      "GM_getValue",
+      "GM_openInTab",
+      "GM_registerMenuCommand",
+      "GM_addStyle"
     ],
     "exclude": [],
     "resources": [],
     "keyedResources": {}
-  },
-  "dependencies": {
-    "@trim21/gm-fetch": "^0.1.13",
-    "axios": "^1.3.6"
   }
 }
