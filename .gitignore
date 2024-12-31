@@ -104,4 +104,7 @@ dist
 .tern-port
 
 # Custom files
-/userscripts/*.js
+/userscripts/*dev*.js
+
+# IDE
+.vscode
